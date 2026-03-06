@@ -1,29 +1,56 @@
+# Environment & secrets
 .venv
 .env
+env
+env3.*
+venv
+Pipfile.lock
+
+# IDE & editors
 .idea
-.ipynb_checkpoints
-.mypy_cache
 .vscode
+.*.sw?
+*~
+
+# Python
 __pycache__
+*.pyc
+*.pyo
+*.py[cod]
+*.egg-info/
+*.so
+build/
+dist/
+
+# Testing & coverage
 .pytest_cache
+.mypy_cache
+.ipynb_checkpoints
 htmlcov
-dist
-site
 .coverage
 coverage.xml
-.netlify
-test.db
+
+# Logs & databases
+*.log
 log.txt
-Pipfile.lock
-env3.*
-env
+test.db
+*.duckdb
+local_db*
+
+# Node
+node_modules/
+
+# Build & deploy
 docs_build
 site_build
-venv
 docs.zip
 archive.zip
-*~
-.*.sw?
-.cache
+site
+.netlify
+
+# OS
 .DS_Store
-local_db*
+.cache
+
+# Misc
+.github
