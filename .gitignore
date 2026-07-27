@@ -35,7 +35,13 @@ coverage.xml
 log.txt
 test.db
 *.duckdb
+*.duckdb.*          # wal files and manual backups (e.g. .bak-pre-rescale)
 local_db*
+data/
+
+# Research data dumps — multi-GB, rebuild with poly_data instead
+*.csv
+!.github/**/*.csv
 
 # Node
 node_modules/
@@ -52,5 +58,7 @@ site
 .DS_Store
 .cache
 
-# Misc
-.github
+# PolyData
+poly_data/goldsky/
+poly_data/processed/
+poly_data/markets.csv
