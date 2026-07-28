@@ -1,11 +1,9 @@
 # Polymarket Committee-Market Signals
 
-Research pipeline testing one question: **when a market's outcome is decided by a
-small committee (Oscars, Grammys, Nobel, halls of fame...), do unusually large
-trades placed just before close predict the result better than chance?**
+Research pipeline crude test for the hypothesis that large anomalous trades made close to market resolution on markets whereby a committee determines the outcome (Nobel Prize awards, who lives/dies in Stranger Things final season, etc.) tend to be correct.
 
-Committee markets are interesting because insiders exist *by construction* —
-voters, jurors, and panelists know the outcome before the public does. If any of
+The intuition is that for committee markets insiders exist by construction, as
+the panel/staff can know the outcome before the public does. If any of
 them trade on it, their size and timing should leave a statistical fingerprint.
 
 **Headline result: the hypothesis was not supported.** The detector performs
