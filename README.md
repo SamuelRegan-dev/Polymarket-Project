@@ -1,6 +1,7 @@
 # Polymarket Committee-Market Signals
 
 *full paper to be commited*
+
 Research pipeline crude test for the hypothesis that large anomalous trades made close to market resolution on markets whereby a committee determines the outcome (Nobel Prize awards, who lives/dies in Stranger Things final season, etc.) tend to be correct.
 
 The intuition is that for committee markets insiders exist by construction, as
