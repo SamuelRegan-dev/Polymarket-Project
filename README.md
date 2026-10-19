@@ -90,13 +90,13 @@ Knowing who *actually won* each market turned out to be the least obvious piece:
    `payoutDenominator` directly over any public Polygon RPC. No API key, no
    indexer, no trust in anyone's database.
 
-On-chain coverage on the current sample is effectively complete (843/843
-committee, 14,075/14,159 sports), so the circular heuristic is not load-bearing
+On-chain coverage on the current sample is effectively complete (745/745
+committee, 13,662/13,745 sports), so the circular heuristic is not load-bearing
 for any reported figure.
 
 ## Findings
 
-Sample: **843 committee markets**, **14,159 sports markets**, all resolved
+Sample: **745 committee markets**, **13,745 sports markets**, all resolved
 against on-chain payouts. Reproduce with `python main.py compare`.
 
 <!-- RESULTS -->
@@ -106,18 +106,18 @@ One vote per market (its largest flagged trade), on-chain resolutions only:
 
 | Cohort | Market-level hit rate | vs. coin flip |
 |---|---|---|
-| Committee (treatment) | **93.2%** (69/74) | z = +7.44, p < 0.0001 |
-| Sports (control) | **92.1%** (1,241/1,347) | z = +30.93, p < 0.0001 |
+| Committee (treatment) | **96.3%** (52/54) | z = +6.80, p < 0.0001 |
+| Sports (control) | **92.1%** (1,159/1,259) | z = +29.85, p < 0.0001 |
 
 Both beat chance decisively. Read alone, either one looks like a discovery.
 Compared against each other:
 
 | Statistic | Value |
 |---|---|
-| Difference (committee − sports) | **+1.1 pp** |
-| 95% CI on difference | [−4.8, +7.0] pp |
-| p-value | 0.73 |
-| Minimum detectable effect | 11.7 pp |
+| Difference (committee − sports) | **+4.2 pp** |
+| 95% CI on difference | [−1.0, +9.5] pp |
+| p-value | 0.25 |
+| Minimum detectable effect | 13.6 pp |
 
 **Verdict: signal not supported.** The confidence interval falls entirely inside
 a pre-specified ±10 pp equivalence margin, so this is a positive finding of
@@ -132,9 +132,9 @@ Mirroring the largest flagged trade in each market at its own execution price:
 
 | Cohort / subset | Edge per $1 staked | 95% CI | p | n |
 |---|---|---|---|---|
-| Committee, all flagged | +1.41¢ | [−0.04%, +2.85%] | 0.056 | 542 |
-| Committee, flat threshold only | +0.86¢ | [−2.87%, +4.58%] | 0.65 | 74 |
-| Sports, all flagged | −0.10¢ | [−0.66%, +0.45%] | 0.72 | 5,736 |
+| Committee, all flagged | +1.22¢ | [−0.37%, +2.81%] | 0.13 | 470 |
+| Committee, flat threshold only | −0.41¢ | [−3.95%, +3.13%] | 0.82 | 54 |
+| Sports, all flagged | −0.02¢ | [−0.59%, +0.55%] | 0.93 | 5,474 |
 
 No configuration reaches significance. All figures are **gross** of fees,
 slippage, and market impact — any of which plausibly exceeds a sub-1% edge when
@@ -191,15 +191,15 @@ python -m pytest tests/ -v
 
 ## Honest caveats
 
-- **Both cohorts skew to near-certain prices.** 68% of committee flags and 51%
+- **Both cohorts skew to near-certain prices.** 79% of committee flags and 50%
   of sports flags execute at ≥ 0.97, where being "correct" is close to
   automatic. Neither arm cleanly isolates pre-outcome prediction.
 - **The market-level unit is deduplication, not declustering.** It collapses by
   market and picks the *largest* trade, not the *earliest* — so a copy-trade
   following an insider can become the market's representative observation, and
   the reported hours-before-close reflects the herd, not the origin.
-- **Committee is underpowered** at n=74 markets on the flat threshold; the
-  minimum detectable effect is 11.7 pp. The equivalence verdict holds at the
+- **Committee is underpowered** at n=54 markets on the flat threshold; the
+  minimum detectable effect is 13.6 pp. The equivalence verdict holds at the
   ±10 pp margin, but a smaller true effect could not be ruled out.
 - **The universe is keyword-defined**, so it is imprecise at the edges. A
   learned classifier would be the rigorous alternative; it was not warranted
